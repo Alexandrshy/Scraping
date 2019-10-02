@@ -1,0 +1,7 @@
+# Dependency directories
+node_modules/
+
+# Working directories
+src/conf/
+file/
+dist/

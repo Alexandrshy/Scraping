@@ -21,10 +21,10 @@ export const list = {
       ({ link, tag }) => {
         return Array.from(document.querySelectorAll(link), item => ({
           link: item.getAttribute('href'),
-          tags: item.querySelector(tag).innerText.split(', ')
+          tags: item.querySelector(tag).innerText.split(', '),
         }));
       },
-      { link: CARDS_LINKS, tag: CARDS_TAGS }
+      { link: CARDS_LINKS, tag: CARDS_TAGS },
     );
 
     return data;
@@ -35,5 +35,5 @@ export const list = {
    */
   close: async browser => {
     await browser.close();
-  }
+  },
 };

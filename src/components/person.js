@@ -7,7 +7,7 @@ import {
   COUNTERS_TWEETS,
   COUNTERS_FOLLOWERS,
   DATA_COUNT,
-  DATA_TIME
+  DATA_TIME,
 } from '../constants/selectors';
 import { BASE_URL } from '../conf';
 
@@ -37,21 +37,14 @@ export const person = {
         countFollowers,
         time,
         dataCount,
-        dataTime
+        dataTime,
       }) => {
         const cont = document.querySelector(container);
 
         return {
-          name:
-            cont && cont.querySelector(name)
-              ? cont.querySelector(name).innerText
-              : '',
-          urlText:
-            cont && cont.querySelector(urlText)
-              ? cont.querySelector(urlText).innerText
-              : '',
-          img:
-            cont && cont.querySelector(img) ? cont.querySelector(img).src : '',
+          name: cont && cont.querySelector(name) ? cont.querySelector(name).innerText : '',
+          urlText: cont && cont.querySelector(urlText) ? cont.querySelector(urlText).innerText : '',
+          img: cont && cont.querySelector(img) ? cont.querySelector(img).src : '',
           countTweets:
             cont && cont.querySelector(countTweets)
               ? cont.querySelector(countTweets).getAttribute(dataCount)
@@ -61,11 +54,9 @@ export const person = {
               ? cont.querySelector(countFollowers).getAttribute(dataCount)
               : '',
           date:
-            cont &&
-            cont.querySelectorAll(time) &&
-            cont.querySelectorAll(time)[1]
+            cont && cont.querySelectorAll(time) && cont.querySelectorAll(time)[1]
               ? cont.querySelectorAll(time)[1].getAttribute(dataTime)
-              : ''
+              : '',
         };
       },
       {
@@ -77,8 +68,8 @@ export const person = {
         dataCount: DATA_COUNT,
         dataTime: DATA_TIME,
         countTweets: COUNTERS_TWEETS,
-        countFollowers: COUNTERS_FOLLOWERS
-      }
+        countFollowers: COUNTERS_FOLLOWERS,
+      },
     );
 
     return data;
@@ -89,5 +80,5 @@ export const person = {
    */
   close: async browser => {
     await browser.close();
-  }
+  },
 };
