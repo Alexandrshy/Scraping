@@ -1,0 +1,44 @@
+{
+  "name": "Scraping",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Alexandrshy",
+    "url": "https://github.com/Alexandrshy"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "eslint": "eslint ./ --color --ext .js",
+    "eslint-fix": "yarn eslint --fix",
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel ./src --out-dir dist",
+    "start": "npm run build && node ./dist/index.js"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "minimist": "^1.2.0",
+    "prettier": "1.18.2",
+    "puppeteer": "^1.20.0",
+    "rimraf": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "1.18.2"
+  }
+}
