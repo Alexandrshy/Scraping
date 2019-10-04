@@ -1,9 +1,11 @@
 import 'babel-polyfill';
+
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 
 import { person } from '../components';
-import { APPROVED_FILE, SCRAPED_FILE } from '../conf';
+import { options } from '../constants/option';
+import { requestInterceptor } from '../libs/interceptor';
 
 let browser = null;
 let page = null;
@@ -15,8 +17,11 @@ async function userValidation() {
   browser = await puppeteer.launch();
   page = await browser.newPage();
 
+  await page.setRequestInterception(true);
+  page.on('request', requestInterceptor(options));
+
   const dataList = [];
-  const persons = JSON.parse(fs.readFileSync(SCRAPED_FILE, 'utf8'));
+  const persons = JSON.parse(fs.readFileSync(options.files.scraped, 'utf8'));
 
   for (const item of persons) {
     const data = await person.get(page, item.link);
@@ -25,7 +30,7 @@ async function userValidation() {
 
   await person.close(browser);
 
-  fs.writeFile(APPROVED_FILE, JSON.stringify(dataList), err => {
+  fs.writeFile(options.files.approved, JSON.stringify(dataList), err => {
     if (err) return console.log(err);
     console.log(`Saved list of ${dataList.length} items`);
   });
