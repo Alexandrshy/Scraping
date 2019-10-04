@@ -28,4 +28,6 @@ Format data
 npm run format
 ```
 
+---
+
 Jest is [MIT licensed](https://github.com/Alexandrshy/scraping/blob/master/LICENSE).
